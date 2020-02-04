@@ -115,9 +115,11 @@
     </Link>
   </ItemDefinitionGroup>
   <ItemGroup>
+    <ClInclude Include="Sort.h" />
     <ClInclude Include="tForwardList.h" />
   </ItemGroup>
   <ItemGroup>
+    <ClCompile Include="Sort.cpp" />
     <ClCompile Include="Source.cpp" />
   </ItemGroup>
   <Import Project="$(VCTargetsPath)\Microsoft.Cpp.targets" />

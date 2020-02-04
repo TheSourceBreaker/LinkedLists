@@ -1,68 +1,60 @@
 #include <iostream>
 #include <vector>
 #include "tForwardList.h"
-
-
+#include "Sort.h"
 
 int main()
 {
 	tList<int> appleBundles;
 
-
-	appleBundles.push_front(6);
-	appleBundles.push_front(5);
-	appleBundles.push_front(4);
-	appleBundles.push_front(3);
-	appleBundles.push_front(2);
-	appleBundles.push_front(1);
-
-	appleBundles.push_back(10);
-	appleBundles.push_back(8);
-	appleBundles.push_back(9);
-	appleBundles.push_back(10);
+	for (int i = 0; i < 6; ++i)
+		appleBundles.push_front(i);
 
 	tList<int> copyList(appleBundles);
 
-	copyList.resize(5);
+	appleBundles.resize(3);
+	appleBundles.resize(14);
+	appleBundles.pop_front();
+	appleBundles.pop_back();
 
-	copyList.push_front(0);
+	int x = appleBundles.front();
+	int y = appleBundles.back();
+	bool b = appleBundles.empty();
+	const int z = appleBundles.front();
+	const int w = appleBundles.back();
 
-	copyList.pop_back();
-	copyList.pop_front();
-
-
-	copyList.remove(10);
-
-	copyList.resize(14);
-
-
-
-
-
-	int x = copyList.front();
-	int y = copyList.back();
-	bool b = copyList.empty();
-	const int z = copyList.front();
-	const int w = copyList.back();
-
+	appleBundles.remove(0);
 	appleBundles.clear();
 
+	//----------------------------------------copyList
 
+	for (int i = 0; i < 6; ++i)
+		copyList.push_front(i);
 
+	copyList.resize(3);
+	copyList.resize(14);
+	copyList.pop_front();
+	copyList.pop_back();
 
-	//---------------------------------------------------------------iterators
+	int u = copyList.front();
+	int i = copyList.back();
+	bool o = copyList.empty();
+	const int p = copyList.front();
+	const int l = copyList.back();
 
-	//iterator iter(head);
+	copyList.remove(0);
+	copyList.clear();
 
-	//appleBundles.begin();
-	//appleBundles.end();
-	//appleBundles.operator=();
+	//---------------------------------------------------------------bubble-sort
 
+	Sort srt;
 
+	std::vector<int> sortTest;
 
+	for (int i = 5; i > 0; i--)
+		sortTest.push_back(i);
 
-
-
+	srt.bubbleSort(sortTest);
 
 	return 0;
 }
