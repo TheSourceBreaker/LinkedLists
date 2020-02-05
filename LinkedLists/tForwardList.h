@@ -19,8 +19,8 @@ class tList
 public:
 	tList(); // initializes head to null
 	~tList(); // delete all nodes upon destruction
-	tList(const tList& other); // copy-constructor--------------------------------------------
-	tList& operator=(const tList &rhs); // copy-assignment------------------------------------
+	tList(const tList& other); // copy-constructor
+	tList& operator=(const tList &rhs); // copy-assignment----------------------------------
 
 	void push_front(const T& val); // adds element to front (i.e. head)
 	void pop_front(); // removes element from front
@@ -46,7 +46,7 @@ public:
 
 		bool operator==(const iterator& rhs) const; // returns true if the iterator points to the same node
 		bool operator!=(const iterator& rhs) const; // returns false if the iterator does not point to the same node
-		T& operator*(); // returns a reference to the element pointed to by the current node---------------------------
+		T& operator*(); // returns a reference to the element pointed to by the current node
 		const T& operator*() const; // returns a reference to the element pointed to by the current node
 
 		iterator operator++(int); // post-increment (returns an iterator as it was before it was incremented)

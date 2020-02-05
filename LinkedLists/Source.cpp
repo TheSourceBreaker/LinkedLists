@@ -11,6 +11,9 @@ int main()
 		appleBundles.push_front(i);
 
 	tList<int> copyList(appleBundles);
+	copyList.push_front(5);
+
+	copyList = appleBundles;
 
 	appleBundles.resize(3);
 	appleBundles.resize(14);
