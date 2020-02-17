@@ -213,14 +213,23 @@ inline void tList<T>::pop_front() // removes element from front
 {
 	if (head != nullptr)
 	{
-		Node* tmp;
-		tmp = head;
-		head = head->next;
-		delete tmp;
-		if (head == nullptr)
+		if (head != tail) 
+		{
+			Node* tmp;
+			tmp = head;
+			head = head->next;
+			delete tmp;
+
+			if (head->prev != nullptr)
+				head->prev = nullptr;
+			
+
+		}
+		else 
+		{
+			head = nullptr;
 			tail = nullptr;
-		else
-			head->prev = nullptr;
+		}
 	}
 }
 
@@ -249,14 +258,23 @@ inline void tList<T>::pop_back() // removes element from back
 {
 	if (tail != nullptr)
 	{
-		Node* tmp;
-		tmp = tail;
-		tail = tail->prev;
-		delete tmp;
-		if (tail == nullptr)
-			head = nullptr;
+		if (tail != head)
+		{
+			Node* tmp;
+			tmp = tail;
+			tail = tail->prev;
+			delete tmp;
+
+			if (tail->next != nullptr)
+				tail->next = nullptr;
+
+
+		}
 		else
-			tail->next = nullptr;
+		{
+			tail = nullptr;
+			head = nullptr;
+		}
 	}
 }
 
@@ -300,17 +318,27 @@ inline void tList<T>::remove(const T & val) // removes all elements equal to the
 			if (firstNode->data == val)
 			{
 				Node* tmp = firstNode->next;
+
 				if (firstNode == head)
+				{
 					head = firstNode->next;
+					head->prev = nullptr;
+				}
 
-				if (firstNode == tail)
+
+				else if (firstNode == tail)
+				{
 					tail = firstNode->prev;
+					tail->next = nullptr;
+				}
+				else
+				{
+					firstNode->prev->next = firstNode->next; // These two lines isn't for head or tail
+					firstNode->next->prev = firstNode->prev;
+				}
 
-				firstNode->prev->next = firstNode->next;
-				firstNode->next->prev = firstNode->prev;
-
-				delete firstNode;
 				firstNode = tmp;
+
 			}
 			else
 				firstNode = firstNode->next;
@@ -330,7 +358,7 @@ inline bool tList<T>::empty() const // Returns true if there are no elements
 template<typename T>
 inline void tList<T>::clear() // Destroys every single node in the linked list
 {
-	while (head != nullptr)
+	while (head != nullptr && tail != nullptr)
 		pop_front();
 }
 

@@ -5,48 +5,58 @@
 
 int main()
 {
-	tList<int> appleBundles;
+	tList<int> appleBundles; //Start List
+
+	for (int i = 0; i < 6; ++i) //Push Front
+		appleBundles.push_front(i);
+
+	tList<int> copyList(appleBundles); // Copy: Start List
+	copyList.push_front(5); // Copy: Push Front
+
+	copyList = appleBundles; // ==operator
+
+	appleBundles.resize(3); // resize min
+	appleBundles.resize(6); // resize max
+
+	for (int i = 0; i < 6; i++) // Pop Front
+		appleBundles.pop_front();
+
+	for (int i = 0; i < 6; ++i)
+		appleBundles.push_back(i);
+
+	for (int i = 0; i < 6; i++) // Pop Back
+		appleBundles.pop_back();
 
 	for (int i = 0; i < 6; ++i)
 		appleBundles.push_front(i);
 
-	tList<int> copyList(appleBundles);
-	copyList.push_front(5);
+	int x = appleBundles.front(); //Front()
+	int y = appleBundles.back(); //Back()
+	bool b = appleBundles.empty(); // Empty()
+	const int z = appleBundles.front(); //const Front()
+	const int w = appleBundles.back(); // const Back()
 
-	copyList = appleBundles;
-
-	appleBundles.resize(3);
-	appleBundles.resize(14);
-	appleBundles.pop_front();
-	appleBundles.pop_back();
-
-	int x = appleBundles.front();
-	int y = appleBundles.back();
-	bool b = appleBundles.empty();
-	const int z = appleBundles.front();
-	const int w = appleBundles.back();
-
-	appleBundles.remove(0);
-	appleBundles.clear();
+	appleBundles.remove(3); // Remove
+	appleBundles.clear(); // Clear
 
 	//----------------------------------------copyList
 
-	for (int i = 0; i < 6; ++i)
+	for (int i = 0; i < 6; ++i) // Copy: Push Front
 		copyList.push_front(i);
 
-	copyList.resize(3);
-	copyList.resize(14);
-	copyList.pop_front();
-	copyList.pop_back();
+	copyList.resize(3); // Copy: resize min
+	copyList.resize(6); // Copy: resize max
+	copyList.pop_front(); // Copy: Pop Front
+	copyList.pop_back(); // Copy: Pop Back
 
-	int u = copyList.front();
-	int i = copyList.back();
-	bool o = copyList.empty();
-	const int p = copyList.front();
-	const int l = copyList.back();
+	int u = copyList.front(); // Copy: Front()
+	int i = copyList.back(); // Copy: Back()
+	bool o = copyList.empty(); // Copy: Empty()
+	const int p = copyList.front(); // Copy: Front()
+	const int l = copyList.back(); // Copy: Back()
 
-	copyList.remove(0);
-	copyList.clear();
+	copyList.remove(0); // Copy: Remove 
+	copyList.clear(); // Copy: Clear
 
 	//---------------------------------------------------------------bubble-sort
 
@@ -55,9 +65,12 @@ int main()
 	std::vector<int> sortTest;
 
 	for (int i = 5; i > 0; i--)
+	{
 		sortTest.push_back(i);
+		sortTest.push_back(i + 1);
+	}
 
-	srt.bubbleSort(sortTest);
+	srt.bubbleSort(sortTest); // BubbleSort
 
 	return 0;
 }
